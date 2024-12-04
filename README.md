@@ -47,4 +47,4 @@ Your actual left and right lists contain many location IDs. What is the total di
 
 To begin, get your puzzle input.
 
-`Answer = x`
+`Part 1 Answer = 1319616`
