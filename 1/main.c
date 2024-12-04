@@ -90,6 +90,33 @@ void minToMaxInTree(struct Node* current) {
     minToMaxInTree(current->right);
 }
 
+int calcDistance(int* llist, int* rlist) {
+    int distance = 0;
+    for (int i = 0; i < 1000; i++) {
+        distance += abs(llist[i] - rlist[i]);
+    }
+
+    return distance;
+}
+
+int calcSimilarityScore(int* llist, int* rlist) {
+    int similarity = 0;
+
+    for (int i = 0; i < 1000; i++) {
+        int number = llist[i];
+        int numberOccurences = 0;
+        for (int j = 0; j < 1000; j++) {
+            if (number == rlist[j]) {
+                numberOccurences++;
+            }
+        }
+
+        similarity += (number * numberOccurences);
+    }
+
+    return similarity;
+}
+
 
 int main() {
     int llist[1000];
@@ -115,13 +142,8 @@ int main() {
     fclose(lfptr);
     fclose(rfptr);
 
-
-    int distance = 0;
-    for (int i = 0; i < 1000; i++) {
-        distance += abs(llist[i] - rlist[i]);
-    }
-
-    printf("Distance: %d\n", distance);
+    printf("Distance: %d\n", calcDistance(llist, rlist));
+    printf("Similarity score: %d\n", calcSimilarityScore(llist, rlist));
 
     return 0;
 }
